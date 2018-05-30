@@ -27,12 +27,12 @@ const removeNote = (title) => {
 
 /* utils */
 const fetchNotes = () => {
-  let notes = [];
   try {
     const notesJSON = fs.readFileSync('notes-data.json'); // can be non-existing
-    notes = JSON.parse(notesJSON); // can be error coded
-  } catch (err) {}
-  return notes;
+    return JSON.parse(notesJSON); // can be error coded
+  } catch (err) {
+    return [];
+  }
 };
 
 const saveNotes = (notes) => {
