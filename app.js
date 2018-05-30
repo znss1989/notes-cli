@@ -11,7 +11,7 @@ switch (command) {
     notes.addNote(argv.title, argv.body);
     break;
   case "read":
-    notes.fetchNote(argv.title);
+    notes.readNote(argv.title);
     break;
   case "list":
     notes.listNotes();

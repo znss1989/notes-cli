@@ -5,24 +5,19 @@ const addNote = (title, body) => {
     title,
     body
   };
-  let notes = [];
-  let notesJSON = "";
-  try {
-    notesJSON = fs.readFileSync('notes-data.json'); // can be non-existing
-    notes = JSON.parse(notesJSON); // can be error coded
-  } catch (err) {}
+  const notes = fetchNotes();
   if (notes.every(note => note.title !== title)) {
     notes.push(note);
-    notesJSON = JSON.stringify(notes);
-    fs.writeFileSync('notes-data.json', notesJSON);
+    saveNotes(notes);
   }
 };
 
-const fetchNote = (title) => {
-  console.log("Fetching the note...");
+const readNote = (title) => {
+  console.log("Reading the note...");
 };
 
 const listNotes = () => {
+  const notes = fetchNotes();
   console.log("Listing all notes...");
 };
 
@@ -30,9 +25,23 @@ const removeNote = (title) => {
   console.log("Removing the note...");
 };
 
+/* utils */
+const fetchNotes = () => {
+  let notes = [];
+  try {
+    const notesJSON = fs.readFileSync('notes-data.json'); // can be non-existing
+    notes = JSON.parse(notesJSON); // can be error coded
+  } catch (err) {}
+  return notes;
+};
+
+const saveNotes = (notes) => {
+  fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+};
+
 module.exports = {
   addNote,
-  fetchNote,
+  readNote,
   listNotes,
   removeNote
 };
