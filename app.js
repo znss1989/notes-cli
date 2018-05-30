@@ -4,20 +4,20 @@ const yargs = require('yargs');
 const notes = require('./notes');
 
 const argv = yargs.argv;
-
 const command = process.argv[2];
+
 switch (command) {
   case "add":
-    console.log("Adding new note...");
+    notes.addNote(argv.title, argv.body);
     break;
   case "read":
-    console.log("Retrieving the note...");
+    notes.fetchNote(argv.title);
     break;
   case "list":
-    console.log("Listing all notes...");
+    notes.listNotes();
     break;
   case "remove":
-    console.log("Removing the note...");
+    notes.removeNote(argv.title);
     break;
   default:
     console.log("Unknown instruction!");
