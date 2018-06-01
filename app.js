@@ -16,15 +16,15 @@ const bodyOption = {
 
 const argv = yargs
   .command("add", "Add a new note", {
-    titleOption, 
-    bodyOption
+    title: titleOption, 
+    body: bodyOption
   })
   .command("list", "List all notes")
   .command("read", "Read a note", {
-    titleOption
+    title: titleOption
   })
   .command("remove", "Delete a note", {
-    titleOption
+    title: titleOption
   })
   .help()
   .argv;
