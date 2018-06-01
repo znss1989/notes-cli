@@ -1,5 +1,5 @@
 # Notes-CLI
-A simple command line notes app
+A simple command line notes app.
 
 ## Install 
 `npm install`
@@ -13,3 +13,6 @@ A simple command line notes app
 `node app.js list`
 - Remove a note
 `node app.js remove --title="node-title"`
+
+## Data
+Notes data will be stored locally in `notes-data.json` during usage.
