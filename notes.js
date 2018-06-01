@@ -46,12 +46,10 @@ const saveNotes = (notes) => {
 
 const logNote = (note) => {
   debugger;
-  console.log(`
----
+  console.log(`---
 Title: ${note.title}
 Body: ${note.body}
----
-  `);
+---`);
 }
 
 module.exports = {
