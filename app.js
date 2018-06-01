@@ -8,7 +8,16 @@ const command = argv._[0];
 
 switch (command) {
   case "add":
-    notes.addNote(argv.title, argv.body);
+    const note = notes.addNote(argv.title, argv.body);
+    if (note) {
+      console.log(`Note created successfully...
+      ---
+      Title: ${note.title}
+      Body: ${note.body}
+      ---`);
+    } else {
+      console.log("Sorry, duplicate title found!");
+    }
     break;
   case "read":
     notes.readNote(argv.title);

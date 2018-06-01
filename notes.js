@@ -9,6 +9,7 @@ const addNote = (title, body) => {
   if (notes.every(note => note.title !== title)) {
     notes.push(note);
     saveNotes(notes);
+    return note;
   }
 };
 
