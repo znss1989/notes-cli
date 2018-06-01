@@ -10,9 +10,7 @@ switch (command) {
   case "add":
     const noteAdded = notes.addNote(argv.title, argv.body);
     if (noteAdded) {
-      console.log(`
-        Note created successfully...
-      `);
+      console.log("Note created successfully...");
       notes.logNote(noteAdded);
     } else {
       console.log("Sorry, duplicate title found!");
@@ -27,15 +25,19 @@ switch (command) {
     }
     break;
   case "list":
-    notes.listNotes();
+    const notesFetched = notes.listNotes();
+    console.log(`Listing all the ${notesFetched.length} note(s)...`);
+    notesFetched.forEach((note) => {
+      notes.logNote(note);
+    });
     break;
   case "remove":
     const found = notes.removeNote(argv.title);
     if (found) {
       console.log(`
-        ---
-        Note with title: ${argv.title} removed.
-        ---
+---
+Note with title: ${argv.title} removed.
+---
       `);
     } else {
       console.log("Note not found!");

@@ -20,7 +20,7 @@ const readNote = (title) => {
 
 const listNotes = () => {
   const notes = fetchNotes();
-  console.log("Listing all notes...");
+  return notes;
 };
 
 const removeNote = (title) => {
@@ -45,11 +45,12 @@ const saveNotes = (notes) => {
 };
 
 const logNote = (note) => {
+  debugger;
   console.log(`
-    ---
-    Title: ${note.title}
-    Body: ${note.body}
-    ---
+---
+Title: ${note.title}
+Body: ${note.body}
+---
   `);
 }
 
