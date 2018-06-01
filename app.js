@@ -10,11 +10,13 @@ switch (command) {
   case "add":
     const note = notes.addNote(argv.title, argv.body);
     if (note) {
-      console.log(`Note created successfully...
-      ---
-      Title: ${note.title}
-      Body: ${note.body}
-      ---`);
+      console.log(`
+        Note created successfully...
+        ---
+        Title: ${note.title}
+        Body: ${note.body}
+        ---
+      `);
     } else {
       console.log("Sorry, duplicate title found!");
     }
@@ -26,7 +28,14 @@ switch (command) {
     notes.listNotes();
     break;
   case "remove":
-    notes.removeNote(argv.title);
+    const found = notes.removeNote(argv.title);
+    if (found) {
+      console.log(`
+        ---
+        Note with title: ${argv.title} removed.
+        ---
+      `);
+    }
     break;
   default:
     console.log("Unknown instruction!");

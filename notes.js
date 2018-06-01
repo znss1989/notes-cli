@@ -23,7 +23,16 @@ const listNotes = () => {
 };
 
 const removeNote = (title) => {
-  console.log("Removing the note...");
+  const notes = fetchNotes();
+  let found = false;
+  const filteredNotes = notes.filter((note) => {
+    if (note.title === title) {
+      found = true
+    }
+    return note.title !== title;
+  });
+  saveNotes(filteredNotes);
+  return found;
 };
 
 /* utils */
