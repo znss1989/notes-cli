@@ -35,6 +35,8 @@ switch (command) {
         Note with title: ${argv.title} removed.
         ---
       `);
+    } else {
+      console.log("Note not found!");
     }
     break;
   default:

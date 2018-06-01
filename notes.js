@@ -24,15 +24,9 @@ const listNotes = () => {
 
 const removeNote = (title) => {
   const notes = fetchNotes();
-  let found = false;
-  const filteredNotes = notes.filter((note) => {
-    if (note.title === title) {
-      found = true
-    }
-    return note.title !== title;
-  });
+  const filteredNotes = notes.filter((note) => note.title !== title);
   saveNotes(filteredNotes);
-  return found;
+  return notes.length !== filteredNotes.length;
 };
 
 /* utils */
