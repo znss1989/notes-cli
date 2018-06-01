@@ -13,7 +13,7 @@ switch (command) {
       console.log(`
         Note created successfully...
       `);
-      logNote(noteAdded);
+      notes.logNote(noteAdded);
     } else {
       console.log("Sorry, duplicate title found!");
     }
@@ -21,7 +21,7 @@ switch (command) {
   case "read":
     const noteFetched = notes.readNote(argv.title);
     if (noteFetched) {
-      logNote(noteFetched);
+      notes.logNote(noteFetched);
     } else {
       console.log("Note not found!");
     }
@@ -46,11 +46,3 @@ switch (command) {
     break;
 }
 
-function logNote(note) {
-  console.log(`
-    ---
-    Title: ${note.title}
-    Body: ${note.body}
-    ---
-  `);
-}
