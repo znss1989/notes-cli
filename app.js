@@ -8,21 +8,23 @@ const command = argv._[0];
 
 switch (command) {
   case "add":
-    const note = notes.addNote(argv.title, argv.body);
-    if (note) {
+    const noteAdded = notes.addNote(argv.title, argv.body);
+    if (noteAdded) {
       console.log(`
         Note created successfully...
-        ---
-        Title: ${note.title}
-        Body: ${note.body}
-        ---
       `);
+      logNote(noteAdded);
     } else {
       console.log("Sorry, duplicate title found!");
     }
     break;
   case "read":
-    notes.readNote(argv.title);
+    const noteFetched = notes.readNote(argv.title);
+    if (noteFetched) {
+      logNote(noteFetched);
+    } else {
+      console.log("Note not found!");
+    }
     break;
   case "list":
     notes.listNotes();
@@ -42,4 +44,13 @@ switch (command) {
   default:
     console.log("Unknown instruction!");
     break;
+}
+
+function logNote(note) {
+  console.log(`
+    ---
+    Title: ${note.title}
+    Body: ${note.body}
+    ---
+  `);
 }

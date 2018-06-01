@@ -14,7 +14,8 @@ const addNote = (title, body) => {
 };
 
 const readNote = (title) => {
-  console.log("Reading the note...");
+  const notes = fetchNotes();
+  return notes.filter(note => note.title === title)[0];
 };
 
 const listNotes = () => {
